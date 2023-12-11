@@ -1,16 +1,21 @@
 import React from "react";
-import Pet from "./components/Pet";
 import SearchParams from "./components/SearchParams";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import Details from "./components/Details";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Adopt Me!</h1>
-      <SearchParams />
-      {/* <Pet name="Luna" animal="Dog" breed="Havanese" />
-      <Pet name="Pepper" animal="Bird" breed="Cockatiel" />
-      <Pet name="Doink" animal="Cat" breed="Mixed" /> */}
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <header>
+          <Link to="/">Adopt Me!</Link>
+        </header>
+        <Routes>
+          <Route path="/details/:id" element={<Details />} />
+          <Route path="/" element={<SearchParams />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
