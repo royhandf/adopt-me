@@ -9,6 +9,12 @@ class Carousel extends Component {
     images: ["http://pets-images.dev-apis.com/pets/none.jpg"],
   };
 
+  handleIndexClick = (e) => {
+    this.setState({
+      active: +e.target.dataset.index,
+    });
+  };
+
   render() {
     const { active } = this.state;
     const { images } = this.props;
@@ -23,9 +29,8 @@ class Carousel extends Component {
               src={photo}
               alt="animal thumbnail"
               className={index === active ? "active" : ""}
-              onClick={(e) => {
-                this.setState({ active: index });
-              }}
+              onClick={this.handleIndexClick}
+              data-index={index}
             />
           ))}
         </div>
